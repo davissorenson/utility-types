@@ -4,6 +4,10 @@ exports[`Assign const result: Assign<{}, Omit<T, 'age'>> = rest (type) should ma
 
 exports[`Assign testType<Assign<Props, NewProps>>() (type) should match snapshot 1`] = `"Pick<Pick<Props, \\"name\\" | \\"visible\\"> & Pick<NewProps, \\"age\\"> & Pick<NewProps, \\"other\\">, \\"name\\" | \\"age\\" | \\"visible\\" | \\"other\\">"`;
 
+exports[`AugmentedReadonly testType<AugmentedReadonly<Props, 'age' | 'visible'>>() (type) should match snapshot 1`] = `"AugmentedReadonly<Props, \\"age\\" | \\"visible\\">"`;
+
+exports[`AugmentedReadonly testType<AugmentedReadonly<Props>>() (type) should match snapshot 1`] = `"AugmentedReadonly<Props, \\"name\\" | \\"age\\" | \\"visible\\">"`;
+
 exports[`AugmentedRequired testType<AugmentedRequired<Partial<Props>, 'age' | 'visible'>>({
       age: 99,
       visible: true,

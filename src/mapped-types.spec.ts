@@ -39,6 +39,7 @@ import {
   Optional,
   ValuesType,
   AugmentedRequired,
+  AugmentedReadonly,
   UnionToIntersection,
   Mutable,
 } from './mapped-types';
@@ -547,6 +548,15 @@ type RequiredOptionalProps = {
     age: 99,
     visible: true,
   });
+}
+
+// @dts-jest:group AugmentedReadonly
+{
+  // @dts-jest:pass:snap
+  testType<AugmentedReadonly<Props>>();
+
+  // @dts-jest:pass:snap
+  testType<AugmentedReadonly<Props, 'age' | 'visible'>>();
 }
 
 // @dts-jest:group UnionToIntersection

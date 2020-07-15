@@ -113,7 +113,7 @@ We are open for contributions. If you're planning to contribute please make sure
 * [`DeepPartial<T>`](#deeppartialt)
 * [`Required<T, K>`](#requiredt-k)
 * [`DeepRequired<T>`](#deeprequiredt)
-* [`Readonly<T>`](#readonlyt) _(built-in)_
+* [`Readonly<T>`](#readonlyt)
 * [`DeepReadonly<T>`](#deepreadonlyt)
 * [`Mutable<T>`](#mutablet)
 * [`Pick<T, K>` _(built-in)_](#pickt-k-built-in)
@@ -672,9 +672,22 @@ type Props = Required<Props, 'age' | 'visible'>;
 
 [⇧ back to top](#table-of-contents)
 
-### `Readonly<T>`
+### `Readonly<T, K>`
 
-Make all properties of object type readonly
+From `T` make a set of properties by key `K` become readonly
+
+**Usage:**
+
+```ts
+import { Readonly } from 'utility-types';
+
+type Props = { name: string; age: number; visible: boolean; };
+
+// Expect: { readonly name: string; readonly age: number; readonly visible: boolean; }
+type Props = Readonly<Props>
+// Expect: { name: string; readonly age: number; readonly visible: boolean; }
+type Props = Readonly<Props, 'age' | 'visible'>;
+```
 
 [⇧ back to top](#table-of-contents)
 

@@ -409,6 +409,27 @@ export type _DeepReadonlyObject<T> = {
 };
 
 /**
+ * AugmentedReadonly
+ * @desc From `T` make a set of properties by key `K` become required
+ * @example
+ *    type Props = {
+ *      name: string;
+ *      age: number;
+ *      visible: boolean;
+ *    };
+ *
+ *    // Expect: { readonly name: string; readonly age: number; readonly visible: boolean; }
+ *    type Props = AugmentedReadonly<Props>;
+ *
+ *    // Expect: { name: string; readonly age: number; readonly visible: boolean; }
+ *    type Props = AugmentedReadonly<Props, 'age' | 'visible'>;
+ */
+export type AugmentedReadonly<
+  T extends object,
+  K extends keyof T = keyof T
+> = Omit<T, K> & Readonly<Pick<T, K>>;
+
+/**
  * DeepRequired
  * @desc Required that works for deeply nested structure
  * @example
